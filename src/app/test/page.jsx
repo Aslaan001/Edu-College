@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Auth from "@/component/Auth";
 
 async function getData() {
-  let response = await fetch("http://localhost:3000/api/CollegeData", {
+  let response = await fetch("api/CollegeData", {
     cache: "no-store",
   });
   let data = await response.json();

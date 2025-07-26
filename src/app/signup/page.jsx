@@ -28,7 +28,7 @@ function page() {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/GetUser", {
+      const res = await fetch("api/GetUser", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
