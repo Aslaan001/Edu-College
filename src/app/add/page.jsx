@@ -16,7 +16,7 @@ function Add() {
   const [category, setcategory] = useState("");
 
   const fun = async () => {
-    let req = await fetch("api/CollegeData", {
+    let req = await fetch("/api/CollegeData", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
