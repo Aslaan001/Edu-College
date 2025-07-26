@@ -25,19 +25,19 @@ export async function GET() {
   }
 }
 
-// PUT: Add a new college
-export async function PUT(request) {
-  try {
-    await connectDB();
-    const body = await request.json();
+// // PUT: Add a new college
+// export async function PUT(request) {
+//   try {
+//     await connectDB();
+//     const body = await request.json();
 
-    const { name, email, pass, add, state, link, number, rating, category } = body;
+//     const { name, email, pass, add, state, link, number, rating, category } = body;
 
-    const college = new College({ name, email, pass, add, state, link, number, rating, category });
-    await college.save();
+//     const college = new College({ name, email, pass, add, state, link, number, rating, category });
+//     await college.save();
 
-    return NextResponse.json({ status: "okh", id: college._id });
-  } catch (err) {
-    return NextResponse.json({ status: "error", error: err.message }, { status: 500 });
-  }
-}
+//     return NextResponse.json({ status: "okh", id: college._id });
+//   } catch (err) {
+//     return NextResponse.json({ status: "error", error: err.message }, { status: 500 });
+//   }
+// }
