@@ -2,44 +2,42 @@ import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 import { College } from "@/lib/models/college";
 
-
-
-// get data from college list
-export async function GET() {
-  let data=null;
-  try {
-     await mongoose.connect(process.env.DATABASE_URL);
-
-     data = await College.find({});
-     console.log("data", data);
-
-   
-   // console.log("res", res);
-  } catch (error) {
-    console.error("Database connection error:", error);
-    return NextResponse.json(
-      { error: "Database connection failed" },
-      { status: 500 }
-    );
+// Connect to DB (only once in hot reload)
+let isConnected = false;
+async function connectDB() {
+  if (!isConnected) {
+    await mongoose.connect(process.env.DATABASE_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    isConnected = true;
   }
-
-  return NextResponse.json({ Status: data });
 }
 
-// adding a new college 
-export async function PUT(req){
-
-  try{
-   await mongoose.connect(process.env.DATABASE_URL);
-
-   const body = await req.json();
-   const { name, email, pass , add, state,link,number,rating,category } = body;
-     const college = new College({ name, email, pass , add, state,link,number,rating,category });
-     await college.save();  
-
-     return NextResponse.json({status:"okh"});
+// GET all colleges
+export async function GET() {
+  try {
+    await connectDB();
+    const colleges = await College.find({});
+    return NextResponse.json({ status: "success", data: colleges });
+  } catch (err) {
+    return NextResponse.json({ status: "error", error: err.message }, { status: 500 });
   }
-  catch(err){
-    return NextResponse.json({DB_Error:err});
+}
+
+// PUT: Add a new college
+export async function PUT(request) {
+  try {
+    await connectDB();
+    const body = await request.json();
+
+    const { name, email, pass, add, state, link, number, rating, category } = body;
+
+    const college = new College({ name, email, pass, add, state, link, number, rating, category });
+    await college.save();
+
+    return NextResponse.json({ status: "okh", id: college._id });
+  } catch (err) {
+    return NextResponse.json({ status: "error", error: err.message }, { status: 500 });
   }
 }
