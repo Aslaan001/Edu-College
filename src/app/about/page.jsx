@@ -26,7 +26,7 @@ const AboutPage = () => {
           <div className="rounded-md border">
             <a href="https://www.linkedin.com/in/aslaan-khan-1824a1272/">
               <Image
-                src="https://erp.psit.ac.in/assets//Simages/32322.jpg"
+                src="https://erp.psit.ac.in/assets/img/Simages/32322.jpg"
                 alt="Aslaan Khan"
                 width={400}
                 height={350}
@@ -49,7 +49,7 @@ const AboutPage = () => {
           {/* Owaish */}
           <div className="rounded-md border">
             <Image
-              src="https://erp.psit.ac.in/assets//Simages/2212320.jpg"
+              src="https://images.pexels.com/photos/33034932/pexels-photo-33034932.jpeg"
               alt="Mohd. Owaish Khan"
               width={400}
               height={350}
@@ -71,7 +71,7 @@ const AboutPage = () => {
           {/* Amrish */}
           <div className="rounded-md border">
             <Image
-              src="https://erp.psit.ac.in/assets//Simages/2212193.jpg"
+              src="https://erp.psit.ac.in/assets/img/Simages/2212193.jpg"
               alt="Amrish Singh"
               width={400}
               height={350}
@@ -93,7 +93,7 @@ const AboutPage = () => {
           {/* Karan */}
           <div className="rounded-md border">
             <Image
-              src="https://erp.psit.ac.in/assets//Simages/2213285.jpg"
+              src="https://erp.psit.ac.in/assets/img/Simages/2212448.jpg"
               alt="Karan Verma"
               width={400}
               height={350}
