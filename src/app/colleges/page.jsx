@@ -4,7 +4,7 @@ import logo from "../assets/walpaper.jpg";
 import Link from "next/link";
 import Auth from "@/component/Auth";
 
-function page({ children }) {
+function Page({ children }) {
   return (
     <>
       <div class="min-h-screen bg-gray-700 flex flex-col">
@@ -105,4 +105,4 @@ function page({ children }) {
   );
 }
 
-export default page;
+export default Page;

@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-function page() {
+function Page() {
   const router = useRouter();
 
   const handleClick = (category) => {
@@ -180,4 +180,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

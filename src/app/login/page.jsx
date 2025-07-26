@@ -5,7 +5,7 @@ import { FaEnvelope, FaLock } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
 
-function page() {
+function Page() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [userid, setuserid] = useState("");
@@ -124,4 +124,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
