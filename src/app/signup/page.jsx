@@ -133,7 +133,7 @@ function Page() {
           <div className="text-center">
             <button
               className="flex items-center justify-center bg-white border border-gray-300 py-3 px-6 rounded-lg shadow-md hover:bg-gray-100 w-full"
-              onClick={() => signIn()}
+              onClick={() => signIn("google", { callbackUrl: "/" })}
             >
               <FcGoogle className="text-2xl mr-3" />
               <span className="font-bold text-gray-700">
