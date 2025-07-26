@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Securely load the Gemini key from the environment
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY);
+const genAI = new GoogleGenerativeAI("AIzaSyCVItCgBsEj6jWlOP20LMWbb0WBXt4i6ms");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 export const getGeminiResponse = async (prompt) => {
