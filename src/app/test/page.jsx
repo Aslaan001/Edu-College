@@ -10,9 +10,9 @@ async function getData() {
     cache: "no-store",
   });
   let data = await response.json();
-  console.log(data.Status[0]);
+  console.log(data);
   
-  return data.Status;
+  return data.data;
 }
 
 function Test() {
