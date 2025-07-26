@@ -116,7 +116,7 @@ export default function Home() {
                     <>
                       <img
                         src={
-                          session.user.image ||
+                          session?.user?.image ||
                           (user?.name
                             ? `https://ui-avatars.com/api/?name=${encodeURIComponent(
                                 user.name
