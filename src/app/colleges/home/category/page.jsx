@@ -138,7 +138,7 @@ function CollegeListPage() {
           ))
         ) : (
           <p className="text-gray-500 text-center w-full">
-            No colleges found for "{category}".
+            No colleges found for &quot;{category}&quot;.
           </p>
         )}
       </div>
