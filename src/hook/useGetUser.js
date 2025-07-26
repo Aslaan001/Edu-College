@@ -1,15 +1,23 @@
-const { useEffect, useState } = require("react");
+"use client";
+import { useEffect, useState } from "react";
 
 const useGetUser = () => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    setUser(user);
+    if (typeof window !== "undefined") {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        try {
+          setUser(JSON.parse(storedUser));
+        } catch (err) {
+          console.error("Invalid JSON in localStorage user:", err);
+        }
+      }
+    }
   }, []);
 
-  return {
-    user,
-  };
+  return { user };
 };
 
 export default useGetUser;
