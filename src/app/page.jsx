@@ -100,6 +100,11 @@ export default function Home() {
                         About
                       </Link>
                     </li>
+                    <li>
+      <Link href="/contact" className="text-black font-bold">
+        Contact
+      </Link>
+    </li>
                   </>
                 )}
 
@@ -111,7 +116,7 @@ export default function Home() {
                     <>
                       <img
                         src={
-                          session?.user?.image ||
+                          session.user.image ||
                           (user?.name
                             ? `https://ui-avatars.com/api/?name=${encodeURIComponent(
                                 user.name
@@ -121,7 +126,7 @@ export default function Home() {
                         alt="Profile Picture"
                         width={40}
                         height={40}
-                        className="rounded-full cursor-pointer bg-slate-600"
+                        className="rounded-full cursor-pointer border-2 border-gray-400 text-black"
                         onClick={toggleDropdown}
                       />
                       {dropdownVisible && (
@@ -189,7 +194,7 @@ export default function Home() {
                   future.
                 </p>
                 <Link
-                  href="/test"
+                  href="/colleges"
                   className="bg-orange-500 text-white py-3 px-6 rounded-md font-bold"
                 >
                   Explore Categories
