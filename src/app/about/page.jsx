@@ -44,7 +44,7 @@ const AboutPage = () => {
                 Profile
               </button>
             </a>
-          </div>
+          </div>   
 
           {/* Owaish */}
           <div className="rounded-md border">
