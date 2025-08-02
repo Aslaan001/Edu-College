@@ -49,7 +49,7 @@ const AboutPage = () => {
           {/* Owaish */}
           <div className="rounded-md border">
             <Image
-              src="https://images.pexels.com/photos/33034932/pexels-photo-33034932.jpeg"
+              src="https://erp.psit.ac.in/assets/img/Simages/2212320.jpg"
               alt="Mohd. Owaish Khan"
               width={400}
               height={350}
