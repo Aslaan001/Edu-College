@@ -14,11 +14,13 @@ function CollegeListPage() {
   const [showModal, setShowModal] = useState(false);
   const [reviewText, setReviewText] = useState("");
   const [collegeReviews, setCollegeReviews] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const user = useGetUser();
 
   useEffect(() => {
     const fetchColleges = async () => {
+      setLoading(true);
       try {
         const res = await fetch("/api/getfilterCollege", {
           method: "POST",
@@ -30,6 +32,8 @@ function CollegeListPage() {
         setColleges(data?.Status || []);
       } catch (error) {
         console.error("Error fetching colleges:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -83,7 +87,9 @@ function CollegeListPage() {
       </h1>
 
       <div className="flex flex-wrap justify-center gap-8">
-        {colleges.length > 0 ? (
+        {loading ? (
+          <p className="text-blue-600 text-center w-full font-semibold text-lg animate-pulse">Loading colleges...</p>
+        ) : colleges.length > 0 ? (
           colleges.map((college, idx) => (
             <div
               key={idx}

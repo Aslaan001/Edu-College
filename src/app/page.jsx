@@ -46,21 +46,35 @@ export default function Home() {
   const [chatHistory, setChatHistory] = useState([]);
   const [isTextareaFocused, setIsTextareaFocused] = useState(false);
   const chatRef = useRef(null);
+  const endOfChatRef = useRef(null);
+  const [botThinking, setBotThinking] = useState(false);
 
 
-
-  
-
-  const handleChatSubmit = () => {
+  const handleChatSubmit = async () => {
     if (!chatInput.trim()) return;
-
-    let res=getGeminiResponse(chatInput);
+    setBotThinking(true);
+    const userMessage = chatInput;
     setChatHistory((prev) => [
       ...prev,
-      { question: chatInput, answer: res },
+      { question: userMessage, answer: null },
     ]);
     setChatInput("");
+    const res = await getGeminiResponse(userMessage);
+    setChatHistory((prev) => {
+      // Replace the last message's answer with the real response
+      const updated = [...prev];
+      const last = updated.pop();
+      updated.push({ ...last, answer: res });
+      return updated;
+    });
+    setBotThinking(false);
   };
+
+  useEffect(() => {
+    if (endOfChatRef.current) {
+      endOfChatRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [chatHistory, botThinking]);
 
   return (
     <>
@@ -264,20 +278,62 @@ export default function Home() {
         {chatOpen && (
           <div
             ref={chatRef}
-            className="fixed bottom-24 right-6 w-96 max-h-[70vh] bg-white border shadow-2xl rounded-lg flex flex-col z-50"
+            className="fixed bottom-24 right-6 w-80 sm:w-96 max-h-[70vh] bg-gray-900 border border-gray-800 shadow-2xl rounded-2xl flex flex-col z-50 animate-fade-in"
+            style={{ transition: 'all 0.3s' }}
           >
-            <div className="p-3 font-bold bg-blue-600 text-white rounded-t-lg">
-              Edu-Explorer AI Assistant
+            {/* Header */}
+            <div className="flex items-center justify-between p-4 bg-gray-950 text-white rounded-t-2xl border-b border-gray-800">
+              <div className="flex items-center gap-2">
+                <FaRobot className="text-2xl text-blue-400" />
+                <span className="font-bold text-lg">Edu-Explorer AI Assistant</span>
+              </div>
+              <button
+                onClick={() => setChatOpen(false)}
+                className="text-white text-2xl font-bold hover:text-blue-400 focus:outline-none"
+                aria-label="Close Chat"
+              >
+                &times;
+              </button>
             </div>
-            <div className="p-3 flex-1 overflow-y-auto space-y-3">
+            {/* Chat History */}
+            <div className="p-4 flex-1 overflow-y-auto space-y-6 bg-gray-900">
+              {chatHistory.length === 0 && (
+                <div className="text-center text-gray-500 italic">How can I help you today?</div>
+              )}
               {chatHistory.map((item, index) => (
-                <div key={index} className="text-sm">
-                  <p className="font-semibold text-gray-800">You: {item.question}</p>
-                  <p className="ml-4 text-gray-800 italic font-bold">Edu_Assistant: {item.answer}</p>
+                <div key={index}>
+                  {/* User message */}
+                  <div className="flex flex-col items-end mb-1">
+                    <span className="text-xs text-gray-400 font-semibold mb-1 pr-1">You</span>
+                    <div className="bg-blue-600 text-white rounded-2xl px-5 py-2 max-w-[70%] shadow-lg text-sm font-medium">
+                      {item.question}
+                    </div>
+                  </div>
+                  {/* Bot message */}
+                  {item.answer && (
+                    <div className="flex flex-col items-start mt-2">
+                      <span className="text-xs text-blue-400 font-semibold mb-1 pl-1">Edu-Chat Bot</span>
+                      <div className="bg-gray-800 text-blue-200 rounded-2xl px-5 py-2 max-w-[80%] shadow border border-gray-700 text-sm flex items-center gap-2">
+                        <FaRobot className="text-blue-400" />
+                        <span>{item.answer}</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
+              {botThinking && (
+                <div className="flex flex-col items-start mt-2">
+                  <span className="text-xs text-blue-400 font-semibold mb-1 pl-1">Edu-Chat Bot</span>
+                  <div className="bg-gray-800 text-blue-200 rounded-2xl px-5 py-2 max-w-[80%] shadow border border-gray-700 text-sm flex items-center gap-2 animate-pulse">
+                    <FaRobot className="text-blue-400" />
+                    <span>Edu-Explorer is thinking...</span>
+                  </div>
+                </div>
+              )}
+              <div ref={endOfChatRef} />
             </div>
-            <div className="p-3 border-t flex items-center">
+            {/* Input Area */}
+            <div className="p-3 border-t border-gray-800 flex items-center bg-gray-900 rounded-b-2xl">
               <textarea
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
@@ -285,12 +341,21 @@ export default function Home() {
                 onBlur={() => setIsTextareaFocused(false)}
                 rows={isTextareaFocused ? 3 : 1}
                 placeholder="Ask something..."
-                className="flex-1 resize-none border rounded p-2 mr-2 text-black transition-all duration-300"
+                className="flex-1 resize-none border border-blue-600 rounded-xl p-2 mr-2 text-white transition-all duration-300 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 bg-gray-800"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    handleChatSubmit();
+                  }
+                }}
               />
               <button
+                type="button"
                 onClick={handleChatSubmit}
-                className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl shadow font-bold flex items-center gap-1 transition-all duration-200 disabled:opacity-50"
+                disabled={!chatInput.trim()}
               >
+                <FaRobot className="text-lg" />
                 Send
               </button>
             </div>
@@ -321,6 +386,13 @@ export default function Home() {
             100% {
               transform: translateX(-100%);
             }
+          }
+          .animate-fade-in {
+            animation: fadeIn 0.3s;
+          }
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
           }
         `}</style>
       </div>

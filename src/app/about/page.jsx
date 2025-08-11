@@ -2,115 +2,118 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
+
+const teamMembers = [
+  {
+    name: "Aslaan Khan",
+    role: "System Designing, Backend Integration, CI-CD Testing",
+    img: "https://erp.psit.ac.in/assets/img/Simages/32322.jpg",
+    profile: "https://www.linkedin.com/in/aslaan-khan-1824a1272/",
+  },
+  {
+    name: "Mohd. Owaish Khan",
+    role: "Frontend, ChatBot-Prompt Engineering",
+    img: "https://erp.psit.ac.in/assets/img/Simages/2212320.jpg",
+    profile: "https://www.linkedin.com/in/aslaan-khan-1824a1272/",
+  },
+  {
+    name: "Amrish Singh",
+    role: "Frontend + Component Designing",
+    img: "https://erp.psit.ac.in/assets/img/Simages/2212193.jpg",
+    profile: "https://www.linkedin.com/in/amrish-singh-566254266/",
+  },
+  {
+    name: "Karan Verma",
+    role: "Feasibility Study,+Figma Design",
+    img: "https://erp.psit.ac.in/assets/img/Simages/2212448.jpg",
+    profile: "https://www.linkedin.com/in/aslaan-khan-1824a1272/",
+  },
+];
 
 const AboutPage = () => {
   return (
-    <div>
-      <div className="mx-auto max-w-7xl px-3">
-        <div className="mt-1 flex items-center">
-          <div className="space-y-6 md:w-3/4">
-            <div className="max-w-max rounded-full border bg-gray-50 p-1 px-3"></div>
-            <p className="text-3xl font-bold text-blue-500 md:text-4xl underline">
-              Meet our team
-            </p>
-            <p className="max-w-4xl text-base text-gray-200 md:text-xl">
-              Our philosophy is simple — hire a team of diverse, passionate people and
-              foster a culture that empowers you to do your best work.
-            </p>
-            <div></div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 gap-y-6 border-b border-gray-300 py-12 pb-20 md:grid-cols-2 lg:grid-cols-4">
-          {/* Aslaan */}
-          <div className="rounded-md border">
-            <a href="https://www.linkedin.com/in/aslaan-khan-1824a1272/">
-              <Image
-                src="https://erp.psit.ac.in/assets/img/Simages/32322.jpg"
-                alt="Aslaan Khan"
-                width={400}
-                height={350}
-                className="rounded-lg object-cover h-[350px] w-full"
-              />
-            </a>
-            <p className="mt-6 w-full px-2 text-xl text-center font-semibold text-blue-500">
-              Aslaan Khan
-            </p>
-            <p className="w-full px-2 pb-6 text-sm font-semibold text-center text-gray-200">
-              Backend APIs
-            </p>
-            <a href="https://www.linkedin.com/in/aslaan-khan-1824a1272/">
-              <button className="ml-28 mb-4 bg-blue-400 rounded-xl w-16 h-8">
-                Profile
-              </button>
-            </a>
-          </div>   
-
-          {/* Owaish */}
-          <div className="rounded-md border">
-            <Image
-              src="https://erp.psit.ac.in/assets/img/Simages/2212320.jpg"
-              alt="Mohd. Owaish Khan"
-              width={400}
-              height={350}
-              className="rounded-lg object-cover h-[350px] w-full"
-            />
-            <p className="mt-6 w-full px-2 text-xl text-center font-semibold text-blue-500">
-              Mohd. Owaish Khan
-            </p>
-            <p className="w-full px-2 pb-6 text-sm font-semibold text-center text-gray-200">
-              FrontEnd
-            </p>
-            <a href="https://www.linkedin.com/in/aslaan-khan-1824a1272/">
-              <button className="ml-28 mb-4 bg-blue-400 rounded-xl w-16 h-8">
-                Profile
-              </button>
-            </a>
+    <div className="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 min-h-screen text-white py-12">
+      <div className="mx-auto max-w-7xl px-4">
+        {/* Intro Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-center mb-12"
+        >
+          <div className="inline-block bg-blue-500/10 border border-blue-500 text-blue-300 rounded-full px-4 py-1 text-sm mb-4">
+            Our Awesome Team
           </div>
 
-          {/* Amrish */}
-          <div className="rounded-md border">
-            <Image
-              src="https://erp.psit.ac.in/assets/img/Simages/2212193.jpg"
-              alt="Amrish Singh"
-              width={400}
-              height={350}
-              className="rounded-lg object-cover h-[350px] w-full"
-            />
-            <p className="mt-6 w-full px-2 text-xl text-center font-semibold text-blue-500">
-              Amrish Singh
-            </p>
-            <p className="w-full px-2 pb-6 text-sm font-semibold text-center text-gray-200">
-              Frontend + Component Designing
-            </p>
-            <a href="https://www.linkedin.com/in/amrish-singh-566254266/">
-              <button className="ml-28 mb-4 bg-blue-400 rounded-xl w-16 h-8">
-                Profile
-              </button>
-            </a>
-          </div>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-blue-400">
+            Meet Our Team
+          </h1>
 
-          {/* Karan */}
-          <div className="rounded-md border">
-            <Image
-              src="https://erp.psit.ac.in/assets/img/Simages/2212448.jpg"
-              alt="Karan Verma"
-              width={400}
-              height={350}
-              className="rounded-lg object-cover h-[350px] w-full"
-            />
-            <p className="mt-6 w-full px-2 text-xl text-center font-semibold text-blue-500">
-              Karan Verma
-            </p>
-            <p className="w-full px-2 pb-6 text-sm font-semibold text-center text-gray-200">
-              Feasibility Study
-            </p>
-            <a href="https://www.linkedin.com/in/aslaan-khan-1824a1272/">
-              <button className="ml-28 mb-4 bg-blue-300 rounded-xl w-16 h-8">
-                Profile
-              </button>
-            </a>
-          </div>
+          {/* Typing animation for intro */}
+          <TypeAnimation
+            sequence={[
+              "We build scalable systems...",
+              1500,
+              "We design amazing UI & UX...",
+              1500,
+              "We solve complex backend problems...",
+              1500,
+              "We turn ideas into reality 🚀",
+              2000,
+            ]}
+            speed={50}
+            repeat={Infinity}
+            wrapper="p"
+            className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto"
+          />
+        </motion.div>
+
+        {/* Team Members Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {teamMembers.map((member, index) => (
+            <motion.div
+              key={member.name}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.3, duration: 0.6 }}
+              whileHover={{ y: -8 }}
+              className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300"
+            >
+              <a href={member.profile} target="_blank">
+                <Image
+                  src={member.img}
+                  alt={member.name}
+                  width={400}
+                  height={350}
+                  className="object-cover w-full h-[350px] hover:scale-105 transition-transform duration-500"
+                />
+              </a>
+              <div className="p-4 text-center">
+                {/* Name typing loop */}
+                <TypeAnimation
+                  sequence={[
+                    member.name, 2000, // type name, pause
+                    "", 500,           // erase name
+                  ]}
+                  speed={50}
+                  deletionSpeed={50} // backspacing effect
+                  repeat={Infinity}
+                  wrapper="h2"
+                  className="text-xl font-bold text-blue-400"
+                />
+                <p className="text-gray-400 text-sm mb-4">{member.role}</p>
+                <a
+                  href={member.profile}
+                  target="_blank"
+                  className="px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-600 transition-colors text-white text-sm font-semibold"
+                >
+                  View Profile
+                </a>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>
@@ -118,4 +121,3 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
-
