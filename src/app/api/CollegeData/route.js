@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 import { College } from "@/lib/models/college";
+import '../../../lib/selfPing';
 
 // Connect to DB (only once in hot reload)
 let isConnected = false;
