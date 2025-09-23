@@ -59,14 +59,29 @@ export default function Home() {
       { question: userMessage, answer: null },
     ]);
     setChatInput("");
-    const res = await getGeminiResponse(userMessage);
-    setChatHistory((prev) => {
-      // Replace the last message's answer with the real response
-      const updated = [...prev];
-      const last = updated.pop();
-      updated.push({ ...last, answer: res });
-      return updated;
-    });
+    try {
+      const res = await getGeminiResponse(userMessage);
+      setChatHistory((prev) => {
+        // Replace the last message's answer with the real response
+        const updated = [...prev];
+        const last = updated.pop();
+        updated.push({ ...last, answer: res });
+        return updated;
+      });
+    } catch (error) {
+      let errorMsg = "Sorry, something went wrong. Please try again.";
+      if (error.message && error.message.includes("503")) {
+        errorMsg = "The AI model is overloaded. Please try again in a few minutes.";
+      } else if (error.message && error.message.includes("overloaded")) {
+        errorMsg = "The AI model is overloaded. Please try again in a few minutes.";
+      }
+      setChatHistory((prev) => {
+        const updated = [...prev];
+        const last = updated.pop();
+        updated.push({ ...last, answer: errorMsg });
+        return updated;
+      });
+    }
     setBotThinking(false);
   };
 

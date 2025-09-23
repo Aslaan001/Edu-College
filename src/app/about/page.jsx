@@ -12,11 +12,12 @@ const teamMembers = [
     img: "https://erp.psit.ac.in/assets/img/Simages/32322.jpg",
     profile: "https://www.linkedin.com/in/aslaan-khan-1824a1272/",
   },
+
   {
-    name: "Mohd. Owaish Khan",
-    role: "Frontend, ChatBot-Prompt Engineering",
-    img: "https://erp.psit.ac.in/assets/img/Simages/2212320.jpg",
-    profile: "https://www.linkedin.com/in/aslaan-khan-1824a1272/",
+    name: "Karan Verma",
+    role: "ChatBot-Prompt Engineering",
+    img: "https://erp.psit.ac.in/assets/img/Simages/2212448.jpg",
+    profile: "https://www.linkedin.com/in/karanverma777177/",
   },
   {
     name: "Amrish Singh",
@@ -25,11 +26,11 @@ const teamMembers = [
     profile: "https://www.linkedin.com/in/amrish-singh-566254266/",
   },
   {
-    name: "Karan Verma",
-    role: "Feasibility Study,+Figma Design",
-    img: "https://erp.psit.ac.in/assets/img/Simages/2212448.jpg",
+    name: "Mohd. Owaish Khan",
+    role: "Frontend",
+    img: "https://erp.psit.ac.in/assets/img/Simages/2212320.jpg",
     profile: "https://www.linkedin.com/in/aslaan-khan-1824a1272/",
-  },
+  }
 ];
 
 const AboutPage = () => {
