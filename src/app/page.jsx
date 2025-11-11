@@ -125,7 +125,7 @@ export default function Home() {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/about" className="text-black font-bold">
+                      <Link href="/about2" className="text-black font-bold">
                         About
                       </Link>
                     </li>
@@ -196,7 +196,7 @@ export default function Home() {
                       </li>
                       <li>
                         <Link
-                          href="/about"
+                          href="/about2"
                           className="text-black text-xl font-bold mr-24"
                         >
                           About
@@ -232,10 +232,15 @@ export default function Home() {
             ) : (
               <>
                 <h1 className="text-4xl font-bold mb-5 relative overflow-hidden h-16">
-                  <span className="absolute animate-marquee whitespace-nowrap">
+                  {/* <span className="absolute animate-marquee whitespace-nowrap">
                     Welcome to Edu-Explorer | Discover Colleges | Find Your
                     Path! | Made By Aslaan Khan , Amrish Singh , Karan , Aditya
                     Singh , Owaish |
+                  </span> */}
+
+                  <span className="absolute animate-marquee whitespace-nowrap">
+                    Welcome to Edu-Explorer | Discover Colleges | Find Your
+                    Path! | Made By Muskan-Ali | Cooperate Training Project
                   </span>
                 </h1>
                 <Link
