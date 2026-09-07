@@ -26,10 +26,10 @@ const teamMembers = [
     profile: "https://www.linkedin.com/in/amrish-singh-566254266/",
   },
   {
-    name: "Mohd. Owaish Khan",
+    name: "Mohd Owaish Khan",
     role: "Frontend",
     img: "https://erp.psit.ac.in/assets/img/Simages/2212320.jpg",
-    profile: "https://www.linkedin.com/in/aslaan-khan-1824a1272/",
+    profile: "https://www.linkedin.com/in/mohd-owaish-aftab-3aa638288/",
   }
 ];
 
